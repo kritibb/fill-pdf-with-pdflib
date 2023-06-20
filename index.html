@@ -1,0 +1,86 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script src="https://unpkg.com/pdf-lib@1.11.0"></script>
+    <script src="https://unpkg.com/downloadjs@1.4.7"></script>
+  </head>
+
+  <body>
+    <h2>HTML Forms</h2>
+
+    <form action="" id="myForm">
+      <label for="fname">First name:</label><br />
+      <input type="text" id="fname" name="fname" /><br />
+      <label for="lname">Last name:</label><br />
+      <input type="text" id="lname" name="lname" /><br /><br />
+      <label for="fname">Father's First name:</label><br />
+      <input type="text" id="ffname" name="ffname" /><br />
+      <label for="lname">Father's Last name:</label><br />
+      <input type="text" id="flname" name="flname" /><br /><br />
+    <p>
+      Click the button to fill form fields in an existing PDF document with
+      <code>pdf-lib</code>
+    </p>
+      <input type="submit" value="Submit" />
+    <p class="small">(Your browser will download the resulting file)</p>
+    </form>
+  </body>
+
+  <script>
+    const { PDFDocument } = PDFLib;
+
+    document.getElementById("myForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      fillForm(e.target);
+    });
+
+    async function fillForm(formd) {
+      // Fetch the PDF with form fields
+      const formUrl = "http://localhost:8000/i-765_unlocked.pdf";
+      const formPdfBytes = await fetch(formUrl).then((res) =>
+        res.arrayBuffer()
+      );
+
+      // Load a PDF with form fields
+      const pdfDoc = await PDFDocument.load(formPdfBytes);
+
+      // Get the form containing all the fields
+      const form = pdfDoc.getForm();
+      var formData = new FormData(formd);
+
+      for (var pair of formData.entries()) {
+        if (pair[0] == "lname") {
+          form
+            .getTextField("form1[0].Page1[0].Line1a_FamilyName[0]")
+            .setText(pair[1]);
+        }
+        if (pair[0] == "fname") {
+        form
+          .getTextField("form1[0].Page1[0].Line1b_GivenName[0]")
+          .setText(pair[1]);
+        }
+        if (pair[0] == "flname") {
+        form
+          .getTextField("form1[0].Page1[0].Line2a_FamilyName[0]")
+          .setText(pair[1]);
+        }
+        if (pair[0] == "ffname") {
+        form
+          .getTextField("form1[0].Page1[0].Line2b_GivenName[0]")
+          .setText(pair[1]);
+        console.log(pair[0] + ": " + pair[1]);
+        }
+
+      }
+
+      const pdfBytes = await pdfDoc.save();
+
+      // Trigger the browser to download the PDF document
+      download(
+        pdfBytes,
+        "pdf-lib_form_creation_example.pdf",
+        "application/pdf"
+      );
+    }
+  </script>
+</html>
