@@ -9,20 +9,63 @@
     <h2>HTML Forms</h2>
 
     <form action="" id="myForm">
-      <label for="fname">First name:</label><br />
-      <input type="text" id="fname" name="fname" /><br />
-      <label for="lname">Last name:</label><br />
-      <input type="text" id="lname" name="lname" /><br /><br />
-      <label for="fname">Father's First name:</label><br />
-      <input type="text" id="ffname" name="ffname" /><br />
-      <label for="lname">Father's Last name:</label><br />
-      <input type="text" id="flname" name="flname" /><br /><br />
-    <p>
-      Click the button to fill form fields in an existing PDF document with
-      <code>pdf-lib</code>
-    </p>
+      <fieldset id="step-1">
+        <legend>Step 1: Personal Information</legend>
+
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="birth-date">Date of Birth:</label>
+        <input type="date" id="birth-date" name="birthDate" required />
+
+        <label for="country-of-birth">Country of Birth:</label>
+        <input
+          type="text"
+          id="country-of-birth"
+          name="countryOfBirth"
+          required
+        />
+
+        <label for="country-of-citizenship">Country of Citizenship:</label>
+        <input
+          type="text"
+          id="country-of-citizenship"
+          name="countryOfCitizenship"
+          required
+        />
+
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required>
+          <option value="female">Female</option>
+          <option value="male">Male</option>
+          <option value="other">Other</option>
+        </select>
+
+        <label for="marital-status">Marital Status:</label>
+        <select id="marital-status" name="maritalStatus" required>
+          <option value="single">Single</option>
+          <option value="married">Married</option>
+          <option value="divorced">Divorced</option>
+          <option value="widowed">Widowed</option>
+        </select>
+
+        <label for="ssn">Social Security Number (if applicable):</label>
+        <input type="text" id="ssn" name="ssn" />
+
+        <label for="alien-number">A-Number (if applicable):</label>
+        <input type="text" id="alien-number" name="alienNumber" />
+
+        <!-- And so on. Ensure you cover all the information required for the application. -->
+
+        <br />
+        <br />
+      </fieldset>
+      <p>
+        Click the button to fill form fields in an existing PDF document with
+        <code>pdf-lib</code>
+      </p>
       <input type="submit" value="Submit" />
-    <p class="small">(Your browser will download the resulting file)</p>
+      <p class="small">(Your browser will download the resulting file)</p>
     </form>
   </body>
 
@@ -31,46 +74,56 @@
 
     document.getElementById("myForm").addEventListener("submit", function (e) {
       e.preventDefault();
+      console.log("formfilled");
       fillForm(e.target);
+      console.log("formfilled or nah");
     });
 
     async function fillForm(formd) {
       // Fetch the PDF with form fields
-      const formUrl = "http://localhost:8000/i-765_unlocked.pdf";
+      const formUrl = "http://localhost:8000/i-485_unlocked.pdf";
+      // const formUrl =
+      //   "/Users/kritibbhattarai/Desktop/ohmylawyer-fullstack/form-fill/i-765_unlocked.pdf";
       const formPdfBytes = await fetch(formUrl).then((res) =>
-        res.arrayBuffer()
+        res.arrayBuffer(),
       );
 
       // Load a PDF with form fields
-      const pdfDoc = await PDFDocument.load(formPdfBytes);
+      const pdfDoc = await PDFDocument.load(formPdfBytes, {
+        ignoreEncryption: true,
+      });
 
       // Get the form containing all the fields
       const form = pdfDoc.getForm();
+      const fieldNames = form.getFields().map((f) => f.getName());
+      console.log(fieldNames);
+
       var formData = new FormData(formd);
 
       for (var pair of formData.entries()) {
-        if (pair[0] == "lname") {
+        // console.log(pair);
+        if (pair[0] == "name") {
           form
-            .getTextField("form1[0].Page1[0].Line1a_FamilyName[0]")
+            .getTextField("form1[0].#subform[0].Pt1Line1a_FamilyName[0]")
             .setText(pair[1]);
         }
-        if (pair[0] == "fname") {
-        form
-          .getTextField("form1[0].Page1[0].Line1b_GivenName[0]")
-          .setText(pair[1]);
+        if (pair[0] == "alienNumber") {
+          form
+            .getTextField("form1[0].#subform[1].Pt1Line10_AlienNumber[1]")
+            .setText(pair[1]);
         }
-        if (pair[0] == "flname") {
-        form
-          .getTextField("form1[0].Page1[0].Line2a_FamilyName[0]")
-          .setText(pair[1]);
+        if (pair[0] == "countryOfBirth") {
+          form
+            .getTextField("form1[0].#subform[1].Pt1Line8_CountryofBirth[0]")
+            .setText(pair[1]);
         }
-        if (pair[0] == "ffname") {
-        form
-          .getTextField("form1[0].Page1[0].Line2b_GivenName[0]")
-          .setText(pair[1]);
-        console.log(pair[0] + ": " + pair[1]);
+        if (pair[0] == "countryOfCitizenship") {
+          form
+            .getTextField(
+              "form1[0].#subform[1].Pt1Line9_CountryofCitizenship[0]",
+            )
+            .setText(pair[1]);
         }
-
       }
 
       const pdfBytes = await pdfDoc.save();
@@ -79,7 +132,7 @@
       download(
         pdfBytes,
         "pdf-lib_form_creation_example.pdf",
-        "application/pdf"
+        "application/pdf",
       );
     }
   </script>

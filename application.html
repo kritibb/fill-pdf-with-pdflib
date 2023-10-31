@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step-by-Step I-485 Application Assistance</title>
+    <!-- Add your external CSS link here -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* CSS styles */
+        
+        #step-1 {
+            /* Optional: Add some spacing between each form control */
+            margin-bottom: 20px;
+            margin-left: 400px;
+            margin-right: 600px;
+            justify-content: center; /* Centered along the main axis */
+            align-items: center; 
+        }
+        
+        #step-1 label,
+        #step-1 input,
+        #step-1 select {
+            /* This will help each element take the full width available and display block-level, pushing them to new lines */
+            display: block;
+            justify-content: center; /* Centered along the main axis */
+            align-items: center; 
+            width: 50%; /* Adjust width as needed */
+            margin-bottom: 10px; /* Space between each form control */
+        }
+        
+        #step-1 input[type="button"] {
+            /* Optional: Style for the button, if you want it to look different from other input elements */
+            display: inline-block; /* for example, to prevent it from becoming full-width like other input elements */
+            width: auto; /* Reverts the width back to only surrounding the text content */
+            margin-top: 20px; /* Extra space before the button */
+        }
+
+
+        #step-2 {
+            /* Optional: Add some spacing between each form control */
+            margin-bottom: 20px;
+            margin-left: 400px;
+            margin-right: 600px;
+            justify-content: center; /* Centered along the main axis */
+            align-items: center; 
+        }
+        
+        #step-2 label,
+        #step-2 input,
+        #step-2 select {
+            /* This will help each element take the full width available and display block-level, pushing them to new lines */
+            display: block;
+            justify-content: center; /* Centered along the main axis */
+            align-items: center; 
+            width: 80%; /* Adjust width as needed */
+            margin-bottom: 10px; /* Space between each form control */
+        }
+        
+        #step-2 input[type="button"] {
+            /* Optional: Style for the button, if you want it to look different from other input elements */
+            display: inline-block; /* for example, to prevent it from becoming full-width like other input elements */
+            width: auto; /* Reverts the width back to only surrounding the text content */
+            margin-top: 20px; /* Extra space before the button */
+        }
+
+
+        #step-3 {
+            /* Optional: Add some spacing between each form control */
+            margin-bottom: 20px;
+            margin-left: 400px;
+            margin-right: 600px;
+            justify-content: center; /* Centered along the main axis */
+            align-items: center; 
+        }
+        
+        #step-3 label,
+        #step-3 input,
+        #step-3 select {
+            /* This will help each element take the full width available and display block-level, pushing them to new lines */
+            display: block;
+            justify-content: center; /* Centered along the main axis */
+            align-items: center; 
+            width: 80%; /* Adjust width as needed */
+            margin-bottom: 10px; /* Space between each form control */
+        }
+        
+        #step-3 input[type="button"] {
+            /* Optional: Style for the button, if you want it to look different from other input elements */
+            display: inline-block; /* for example, to prevent it from becoming full-width like other input elements */
+            width: auto; /* Reverts the width back to only surrounding the text content */
+            margin-top: 20px; /* Extra space before the button */
+        }
+
+        /* Step-4*/
+        #step-4 {
+            /* Optional: Add some spacing between each form control */
+            margin-bottom: 20px;
+            margin-left: 400px;
+            margin-right: 600px;
+            justify-content: center; /* Centered along the main axis */
+            align-items: center; 
+        }
+        
+        #step-4 label,
+        #step-4 input,
+        #step-4 select {
+            /* This will help each element take the full width available and display block-level, pushing them to new lines */
+            display: block;
+            justify-content: center; /* Centered along the main axis */
+            align-items: center; 
+            width: 80%; /* Adjust width as needed */
+            margin-bottom: 10px; /* Space between each form control */
+        }
+        
+        #step-4 input[type="button"] {
+            /* Optional: Style for the button, if you want it to look different from other input elements */
+            display: inline-block; /* for example, to prevent it from becoming full-width like other input elements */
+            width: auto; /* Reverts the width back to only surrounding the text content */
+            margin-top: 20px; /* Extra space before the button */
+        }
+
+        /* Step-4*/
+        #step-5 {
+            /* Optional: Add some spacing between each form control */
+            margin-bottom: 20px;
+            margin-left: 400px;
+            margin-right: 600px;
+            justify-content: center; /* Centered along the main axis */
+            align-items: center; 
+        }
+
+        /* Step-4*/
+        #step-6 {
+            /* Optional: Add some spacing between each form control */
+            margin-bottom: 20px;
+            margin-left: 400px;
+            margin-right: 600px;
+            justify-content: center; /* Centered along the main axis */
+            align-items: center; 
+        }
+
+        /* Step-4*/
+        #step-7 {
+            /* Optional: Add some spacing between each form control */
+            margin-bottom: 20px;
+            margin-left: 400px;
+            margin-right: 600px;
+            justify-content: center; /* Centered along the main axis */
+            align-items: center; 
+        }
+
+    </style>    <!-- Head elements here -->
+
+
+    <script>
+        function goToStep(stepNumber) {
+    // Get all the steps
+    var steps = document.querySelectorAll('fieldset');
+
+    // Hide all the steps
+    for (var i = 0; i < steps.length; i++) {
+        steps[i].style.display = 'none';
+        //document.getElementById('step-' + i).style.display = 'none';
+    }
+
+    // Show the specific step passed as a parameter
+    var step = document.getElementById('step-' + stepNumber);
+    if (step) {
+        step.style.display = 'block';
+    } else {
+        // This will catch if the 'step-' ID is not found, which could help in debugging
+        console.error('Step ' + stepNumber + ' not found.');
+    }
+
+    // now, show the current step
+    //document.getElementById('step-' + step).style.display = 'block';
+}
+
+
+        function validateAndGoToStep(stepNumber) {
+            var files = document.getElementById('supplemental-documents').files;
+
+            // Check if files are uploaded
+            if (files.length === 0) {
+                alert("Please upload the required documents before proceeding.");
+            } else {
+                // Optionally, validate file types and sizes here
+                
+                // If everything's good, proceed to the next step
+                goToStep(stepNumber);
+            }
+        }
+
+        function validateFilesAndSubmit() {
+        var files = document.getElementById('supplemental-documents').files;
+
+        // Check if files are uploaded
+        if (files.length === 0) {
+            alert("Please upload the required documents before submitting.");
+        } else {
+            // Optionally, validate file types and sizes here
+            
+            // If everything's good, submit the form
+            document.getElementById('i-485-form').submit();
+        }
+        }
+
+        // Function to collect all data and show on the final step
+// function showSummary() {
+//     let summaryContent = '';
+//     const formData = new FormData(document.getElementById('multiStepForm'));
+
+//     // iterate over all of the form fields
+//     for (var pair of formData.entries()) {
+//         summaryContent += `<strong>${pair[0]}:</strong> ${pair[1]}<br />`; // constructing the summary
+//     }
+
+//     // hide the last step
+//     document.getElementById('step-7').style.display = 'none';
+
+//     // show the final step and populate it
+//     const finalStepDiv = document.getElementById('final-step');
+//     finalStepDiv.innerHTML = summaryContent;
+//     finalStepDiv.style.display = 'block';
+// }
+
+// Initialize by showing the first step
+//goToStep(1);
+
+    </script>
+</head>
+<body>
+
+    <header>
+        <h1>Step-by-Step I-485 Application Assistance</h1>
+    </header>
+
+    <main>
+        <!-- Introduction or instruction for the form -->
+        <section id="introduction">
+            <p>Welcome to our guided I-485 application process. We'll help you fill out each section step by step.</p>
+        </section>
+
+        <!-- The form itself, possibly broken into multiple sections -->
+        <section id="form-steps">
+            <form id="i-485-form" action="/submit-application" method="post">
+            <!-- <form id="multiStepForm"> -->
+                
+                <!-- ... other parts of your HTML above ... -->
+
+<fieldset id="step-1">
+    <legend>Step 1: Personal Information</legend>
+    
+    <label for="name">Full Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="birth-date">Date of Birth:</label>
+    <input type="date" id="birth-date" name="birthDate" required>
+    
+    <label for="country-of-birth">Country of Birth:</label>
+    <input type="text" id="country-of-birth" name="countryOfBirth" required>
+
+    <label for="country-of-citizenship">Country of Citizenship:</label>
+    <input type="text" id="country-of-citizenship" name="countryOfCitizenship" required>
+
+    <label for="gender">Gender:</label>
+    <select id="gender" name="gender" required>
+        <option value="female">Female</option>
+        <option value="male">Male</option>
+        <option value="other">Other</option>
+    </select>
+    
+    <label for="marital-status">Marital Status:</label>
+    <select id="marital-status" name="maritalStatus" required>
+        <option value="single">Single</option>
+        <option value="married">Married</option>
+        <option value="divorced">Divorced</option>
+        <option value="widowed">Widowed</option>
+    </select>
+
+    <label for="ssn">Social Security Number (if applicable):</label>
+    <input type="text" id="ssn" name="ssn">
+    
+    <label for="alien-number">A-Number (if applicable):</label>
+    <input type="text" id="alien-number" name="alienNumber">
+    
+    <!-- And so on. Ensure you cover all the information required for the application. -->
+
+    <br>
+    <br>
+    <button type="button" onclick="goToStep(2)">Next Step</button>
+</fieldset>
+
+<!-- ... rest of your HTML ... -->
+
+                
+                <!-- Step 2 -->
+<fieldset id="step-2" style="display:none;">
+    <legend>Step 2: Address Information</legend>
+    
+    <label for="current-address">Current Address:</label>
+    <input type="text" id="current-address" name="currentAddress" required placeholder="Street address, city, state, postal code">
+    
+    <label for="current-address-duration">How long have you lived at your current address?</label>
+    <input type="text" id="current-address-duration" name="currentAddressDuration" required placeholder="e.g., 2 years, 5 months">
+
+    <label for="previous-address">Previous Address (if applicable):</label>
+    <input type="text" id="previous-address" name="previousAddress" placeholder="Street address, city, state, postal code">
+
+    <label for="previous-address-duration">How long did you live at your previous address?</label>
+    <input type="text" id="previous-address-duration" name="previousAddressDuration" placeholder="e.g., 1 year, 3 months">
+
+    <!-- If the applicant has multiple previous addresses within the last five years, you might need to add options to include additional addresses. This depends on the exact requirements of the I-485. -->
+
+    <label for="mailing-address">Mailing Address (if different from current address):</label>
+    <input type="text" id="mailing-address" name="mailingAddress" placeholder="Street address, city, state, postal code">
+    
+    <!-- Include any specific details that might be required by the I-485 form, such as whether an address is in the United States, the applicant's address history, and so on. -->
+
+    <br>
+    <br>
+    <button type="button" onclick="goToStep(1)">Previous Step</button>
+    <button type="button" onclick="goToStep(3)">Next Step</button>
+</fieldset>
+
+<!-- Step 3: Employment Information -->
+<fieldset id="step-3" style="display:none;">
+    <legend>Step 3: Employment Information</legend>
+
+    <label for="current-employer">Current Employer:</label>
+    <input type="text" id="current-employer" name="currentEmployer" placeholder="Name of company">
+
+    <label for="job-title">Job Title:</label>
+    <input type="text" id="job-title" name="jobTitle" placeholder="Your job title">
+
+    <label for="employment-start-date">Employment Start Date:</label>
+    <input type="date" id="employment-start-date" name="employmentStartDate">
+
+    <!-- More fields specific to the applicant's employment situation -->
+
+    <br>
+    <br>
+    <button type="button" onclick="goToStep(2)">Previous Step</button>
+    <button type="button" onclick="goToStep(4)">Next Step</button>
+</fieldset>
+
+<!-- Step 4: Family Information -->
+<fieldset id="step-4" style="display:none;">
+    <legend>Step 4: Family Information</legend>
+
+    <label for="spouse-name">Spouse's Full Name (if applicable):</label>
+    <input type="text" id="spouse-name" name="spouseName" placeholder="Full name">
+
+    <label for="children">Number of Children (if applicable):</label>
+    <input type="number" id="children" name="children" placeholder="0 if none">
+
+    <!-- More fields specific to the applicant's family situation -->
+
+    <br>
+    <br>
+    <button type="button" onclick="goToStep(3)">Previous Step</button>
+    <button type="button" onclick="goToStep(5)">Next Step</button>
+</fieldset>
+
+<!-- Step 5: Background and Eligibility -->
+<fieldset id="step-5" style="display:none;">
+    <legend>Step 5: Background and Eligibility</legend>
+
+    <p>Have you ever been arrested, charged, or convicted of a crime?</p>
+    <!-- Radio buttons for "Yes" and "No" choices -->
+    <input type="radio" id="arrested-yes" name="arrested" value="yes">
+    <label for="arrested-yes">Yes</label>
+    <input type="radio" id="arrested-no" name="arrested" value="no" checked>
+    <label for="arrested-no">No</label>
+
+    <!-- Conditional fields that show up if the answer is "Yes" -->
+
+    <p>Do you have any medical conditions that would require special attention during your stay in the United States?</p>
+    <!-- Similar structure as the previous question -->
+
+    <!-- More fields regarding background and eligibility -->
+
+    <br>
+    <br>
+    <button type="button" onclick="goToStep(4)">Previous Step</button>
+    <button type="button" onclick="goToStep(6)">Next Step</button> <!-- Assuming there's a Step 6 -->
+</fieldset>
+
+<!-- More steps depending on the I-485 form's requirements -->
+
+<!-- Script to handle form navigation remains the same -->
+
+                
+                <!-- More steps... -->
+<!-- Step X: Document Upload -->
+<fieldset id="step-6" style="display:none;">
+    <legend>Step X: Upload Supplemental Documents</legend>
+
+    <p>Please upload any relevant documents (e.g., birth certificate, photo ID). Make sure they are clear and legible.</p>
+    
+    <!-- Allow multiple file uploads -->
+    <input type="file" id="supplemental-documents" name="supplementalDocuments" multiple required>
+
+    <br>
+    <br>
+    <button type="button" onclick="goToStep(5)">Previous Step</button>
+    <button type="button" onclick="goToStep(7)">Next Step</button> <!-- Adjusted here -->
+</fieldset>
+
+<!-- Final step -->
+<!-- <fieldset id="final-step" style="display:none;"> -->
+    <fieldset id="step-7" style="display:none;">
+    <legend>Final Step: Review and Submit</legend>
+
+    <!-- Review information and submit -->
+    <p>Please review your information before submitting.</p>
+    <!-- ... -->
+
+    <button type="button" onclick="goToStep('7')">Previous Step</button>
+    <!-- <button type="button" onclick="validateFilesAndSubmit()">Submit Application</button>  -->
+    <button type="button" onclick="goToStep('8')">Submit Application</button>
+</fieldset>
+
+        <!-- New Section for Submission Message -->
+    <fieldset id="step-8" style="display: none;">
+        <legend>Thank you for submitting your form!</legend>
+        <p>Your submission is now in the trusted hands of our expert team. We take pride in thoroughly reviewing every detail to ensure the best possible outcome for you.</p>
+        <p>📞 <strong>Expect a Call or Email Soon!</strong></p>
+        <p>One of our experts will reach out to you shortly to discuss the next steps, answer any questions, and guide you further.</p>
+        <p>💡 <strong>In the Meantime:</strong></p>
+        <p>We invite you to explore our <a href="#">Chat AI</a> for helpful answers and FAQs that might address any immediate concerns.</p>
+    </fieldset>
+        
+    </fieldset> -->
+    
+        <!-- </form> -->
+        </section>
+    </main>
+
+
+</body>
+  <script>
+    const { PDFDocument } = PDFLib;
+
+    document.getElementById("myForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      console.log("formfilled");
+      fillForm(e.target);
+      console.log("formfilled or nah");
+    });
+
+    async function fillForm(formd) {
+      // Fetch the PDF with form fields
+      const formUrl = "http://localhost:8000/i-765_unlocked.pdf";
+      // const formUrl =
+      //   "/Users/kritibbhattarai/Desktop/ohmylawyer-fullstack/form-fill/i-765_unlocked.pdf";
+      const formPdfBytes = await fetch(formUrl).then((res) =>
+        res.arrayBuffer(),
+      );
+
+      // Load a PDF with form fields
+      const pdfDoc = await PDFDocument.load(formPdfBytes);
+
+      // Get the form containing all the fields
+      const form = pdfDoc.getForm();
+      var formData = new FormData(formd);
+
+      for (var pair of formData.entries()) {
+        if (pair[0] == "lname") {
+          form
+            .getTextField("form1[0].Page1[0].Line1a_FamilyName[0]")
+            .setText(pair[1]);
+        }
+        if (pair[0] == "fname") {
+          form
+            .getTextField("form1[0].Page1[0].Line1b_GivenName[0]")
+            .setText(pair[1]);
+        }
+        if (pair[0] == "flname") {
+          form
+            .getTextField("form1[0].Page1[0].Line2a_FamilyName[0]")
+            .setText(pair[1]);
+        }
+        if (pair[0] == "ffname") {
+          form
+            .getTextField("form1[0].Page1[0].Line2b_GivenName[0]")
+            .setText(pair[1]);
+          console.log(pair[0] + ": " + pair[1]);
+        }
+      }
+
+      const pdfBytes = await pdfDoc.save();
+
+      // Trigger the browser to download the PDF document
+      download(
+        pdfBytes,
+        "pdf-lib_form_creation_example.pdf",
+        "application/pdf",
+      );
+    }
+  </script>
+
+</html>
